@@ -13,16 +13,27 @@
 </div>
 
 > **Course:** Artificial Intelligence: Real-World Applications & Implications  
+
 > **Course Code:** `IDAI 102` (Python Programming)  
+
 > **Assignment Title:** Design 'WaterBuddy': Your Daily Hydration Companion  
+
 > **Type of Assessment:** Formative Assessment 2 (FA-2: Developing and Deploying App Using Python)  
+
 > **Scenario Track:** WellNest Technologies Pvt. Ltd. — Clinical Hydration System  
+
 > **Student Developer:** Subhaan Imamuddin Syed(Candidate ID: `1000545`)  
+
 > **Project Partner:** Parth Gajera
+
 > **School / Institutional Partner:** Aspee Nutan Academy / WACP International  
+
 > **Client Organization:** WellNest Technologies Pvt. Ltd. | Python Development Team  
+
 > **Foundational Planning Atlas:** [Canva Visual Atlas ID: DAHaMtZ-7e8](https://www.canva.com/design/DAHaMtZ-7e8/n84luFgkTNmd7cwaOCu89Q/edit)
-> **Live Interactive Application:**
+
+> **Live Interactive Application:** [https://waterbuddy-fa2-subhaanimamuddinsyed-1000545-eaeq3lhin8q2xxxlhm.streamlit.app/](https://waterbuddy-fa2-subhaanimamuddinsyed-1000545-eaeq3lhin8q2xxxlhm.streamlit.app/)
+
 > **GitHub Repository URL:** [https://github.com/subhaansyed938-cpu/Waterbuddy-FA2-Subhaan_Imamuddin_Syed-1000545](https://github.com/subhaansyed938-cpu/Waterbuddy-FA2-Subhaan_Imamuddin_Syed-1000545)
 
 ---
