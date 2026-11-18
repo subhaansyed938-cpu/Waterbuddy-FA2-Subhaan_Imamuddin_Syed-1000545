@@ -734,27 +734,27 @@ render_html(f"""
 
 # EXISTING HYDRATION TIP
 st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
-        if not st.session_state.show_reset_confirm:
-            if st.button("🔄 Start a New Day (Reset)", width="stretch"):
-                st.session_state.show_reset_confirm = True
-                st.rerun()
-        else:
-            st.warning("Clear today's logged water intake?")
-            rc1, rc2 = st.columns(2)
-            with rc1:
-                if st.button("Yes, Reset", type="primary", width="stretch"):
-                    st.session_state.total_intake = 0
-                    st.session_state.intake_history = []
-                    st.session_state.recent_art = None
-                    st.session_state.show_reset_confirm = False
-                    st.session_state.mascot_mood = "start"
-                    st.toast("Started fresh for a new day!", icon="🔄")
-                    st.rerun()
-            with rc2:
-                if st.button("Cancel", width="stretch"):
-                    st.session_state.show_reset_confirm = False
-                    st.rerun()
 
+if not st.session_state.show_reset_confirm:
+    if st.button("🔄 Start a New Day (Reset)", width="stretch"):
+        st.session_state.show_reset_confirm = True
+        st.rerun()
+else:
+    st.warning("Clear today's logged water intake?")
+    rc1, rc2 = st.columns(2)
+    with rc1:
+        if st.button("Yes, Reset", type="primary", width="stretch"):
+            st.session_state.total_intake = 0
+            st.session_state.intake_history = []
+            st.session_state.recent_art = None
+            st.session_state.show_reset_confirm = False
+            st.session_state.mascot_mood = "start"
+            st.toast("Started fresh for a new day!", icon="🔄")
+            st.rerun()
+    with rc2:
+        if st.button("Cancel", width="stretch"):
+            st.session_state.show_reset_confirm = False
+            st.rerun()
     # --------------------------------------------------------------------------
     # VIEW 1: 📊 DASHBOARD
     # --------------------------------------------------------------------------
