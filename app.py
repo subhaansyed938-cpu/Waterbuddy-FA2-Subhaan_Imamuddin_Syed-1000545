@@ -5,6 +5,7 @@ from datetime import date, datetime
 import pandas as pd
 from PIL import Image, ImageDraw
 import streamlit as st
+from mascot_code import show_waterbuddy
 
 # ------------------------------------------------------------------------------
 # WaterBuddy — Your Daily Hydration Companion
@@ -683,78 +684,78 @@ else:
             st.session_state.dark_theme = dark_toggle
             st.rerun()
 
-        # ------------------------------------------------------------------------------
-# MOTIVATIONAL QUOTES MODULE
-# ------------------------------------------------------------------------------
+        if not st.session_state.show_reset_confirm:
+            if st.button("🔄 Start a New Day (Reset)", width="stretch"):
+                st.session_state.show_reset_confirm = True
+                st.rerun()
+        else:
+            st.warning("Clear today's logged water intake?")
+            rc1, rc2 = st.columns(2)
+            with rc1:
+                if st.button("Yes, Reset", type="primary", width="stretch"):
+                    st.session_state.total_intake = 0
+                    st.session_state.intake_history = []
+                    st.session_state.recent_art = None
+                    st.session_state.show_reset_confirm = False
+                    st.session_state.mascot_mood = "start"
+                    st.toast("Started fresh for a new day!", icon="🔄")
+                    st.rerun()
+            with rc2:
+                if st.button("Cancel", width="stretch"):
+                    st.session_state.show_reset_confirm = False
+                    st.rerun()
+    # ------------------------------------------------------------------------------
+    # MOTIVATIONAL QUOTES MODULE
+    # ------------------------------------------------------------------------------
 
-st.markdown("---")
+    st.markdown("---")
 
-motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
+    motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
 
-render_html(f"""
-<div style="
+    render_html(f"""
+    <div style="
     background: linear-gradient(135deg, #383C78, #A95C96);
     padding: 16px;
     border-radius: 16px;
     text-align: center;
     margin-bottom: 12px;
     box-shadow: 0 4px 12px rgba(56, 60, 120, 0.20);
-">
-    <div style="
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        opacity: 0.85;
-        margin-bottom: 10px;
     ">
-        ✨ A LITTLE MOTIVATION
+    <div style="
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    opacity: 0.85;
+    margin-bottom: 10px;
+    ">
+    ✨ A LITTLE MOTIVATION
     </div>
 
     <div style="
-        font-size: 1rem;
-        font-weight: 600;
-        color: #FFFFFF;
-        line-height: 1.6;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    line-height: 1.6;
     ">
-        {html.escape(motivational_quote)}
+    {html.escape(motivational_quote)}
     </div>
 
     <div style="
-        font-size: 0.8rem;
-        margin-top: 10px;
-        color: #FFFFFF;
-        opacity: 0.8;
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #FFFFFF;
+    opacity: 0.8;
     ">
-        — WaterBuddy 💧
+    — WaterBuddy 💧
     </div>
-</div>
-""")
+    </div>
+    """)
 
-# EXISTING HYDRATION TIP
-st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
+    # EXISTING HYDRATION TIP
+    st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
 
-if not st.session_state.show_reset_confirm:
-    if st.button("🔄 Start a New Day (Reset)", width="stretch"):
-        st.session_state.show_reset_confirm = True
-        st.rerun()
-else:
-    st.warning("Clear today's logged water intake?")
-    rc1, rc2 = st.columns(2)
-    with rc1:
-        if st.button("Yes, Reset", type="primary", width="stretch"):
-            st.session_state.total_intake = 0
-            st.session_state.intake_history = []
-            st.session_state.recent_art = None
-            st.session_state.show_reset_confirm = False
-            st.session_state.mascot_mood = "start"
-            st.toast("Started fresh for a new day!", icon="🔄")
-            st.rerun()
-    with rc2:
-        if st.button("Cancel", width="stretch"):
-            st.session_state.show_reset_confirm = False
-            st.rerun()
     # --------------------------------------------------------------------------
     # VIEW 1: 📊 DASHBOARD
     # --------------------------------------------------------------------------
@@ -765,7 +766,7 @@ else:
         if st.session_state.recent_art:
             col_m1, col_m2, col_m3 = st.columns([0.65, 2.35, 1.0])
             with col_m1:
-                render_html(render_animated_avatar_svg(st.session_state.user_avatar, st.session_state.mascot_mood, 140, 140))
+                show_waterbuddy(percentage, width=150)
             with col_m2:
                 render_html(f"""
                 <div class="mascot-bubble">
@@ -780,7 +781,7 @@ else:
         else:
             col_m1, col_m2 = st.columns([0.65, 3.35])
             with col_m1:
-                render_html(render_animated_avatar_svg(st.session_state.user_avatar, st.session_state.mascot_mood, 140, 140))
+                show_waterbuddy(percentage, width=150)
             with col_m2:
                 render_html(f"""
                 <div class="mascot-bubble">
