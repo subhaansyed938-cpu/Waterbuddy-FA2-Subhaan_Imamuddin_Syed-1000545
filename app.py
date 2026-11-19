@@ -738,7 +738,7 @@ if not st.session_state.show_reset_confirm:
             if st.button("🔄 Start a New Day (Reset)", width="stretch"):
                 st.session_state.show_reset_confirm = True
                 st.rerun()
-        else:
+else:
             st.warning("Clear today's logged water intake?")
             rc1, rc2 = st.columns(2)
             with rc1:
