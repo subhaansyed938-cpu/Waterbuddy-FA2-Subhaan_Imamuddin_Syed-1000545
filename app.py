@@ -734,7 +734,7 @@ render_html(f"""
 
 # EXISTING HYDRATION TIP
 st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
-        if not st.session_state.show_reset_confirm:
+if not st.session_state.show_reset_confirm:
             if st.button("🔄 Start a New Day (Reset)", width="stretch"):
                 st.session_state.show_reset_confirm = True
                 st.rerun()
