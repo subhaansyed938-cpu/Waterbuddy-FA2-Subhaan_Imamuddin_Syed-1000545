@@ -673,68 +673,6 @@ else:
         if st.button("⚙️ Edit Profile / Avatar", width="stretch"):
             st.session_state.onboarded = False
             st.rerun()
-
-        st.markdown("---")
-        st.session_state.nav_view = st.radio("Navigation:", ["📊 Dashboard", "🏆 Wall of Badges", "🥤 Vessel & Cup Studio"])
-
-        dark_toggle = st.toggle("🌙 High-Contrast Dark Mode", value=st.session_state.dark_theme)
-        if dark_toggle != st.session_state.dark_theme:
-            st.session_state.dark_theme = dark_toggle
-            st.rerun()
-
-        
-# ------------------------------------------------------------------------------
-# MOTIVATIONAL QUOTES MODULE
-# ------------------------------------------------------------------------------
-
-st.markdown("---")
-
-motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
-
-render_html(f"""
-<div style="
-    background: linear-gradient(135deg, #383C78, #A95C96);
-    padding: 16px;
-    border-radius: 16px;
-    text-align: center;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 12px rgba(56, 60, 120, 0.20);
-">
-    <div style="
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #FFFFFF;
-        opacity: 0.85;
-        margin-bottom: 10px;
-    ">
-        ✨ A LITTLE MOTIVATION
-    </div>
-
-    <div style="
-        font-size: 1rem;
-        font-weight: 600;
-        color: #FFFFFF;
-        line-height: 1.6;
-    ">
-        {html.escape(motivational_quote)}
-    </div>
-
-    <div style="
-        font-size: 0.8rem;
-        margin-top: 10px;
-        color: #FFFFFF;
-        opacity: 0.8;
-    ">
-        — WaterBuddy 💧
-    </div>
-</div>
-""")
-
-# EXISTING HYDRATION TIP
-st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
-
         if not st.session_state.show_reset_confirm:
             if st.button("🔄 Start a New Day (Reset)", width="stretch"):
                 st.session_state.show_reset_confirm = True
@@ -755,6 +693,68 @@ st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
                 if st.button("Cancel", width="stretch"):
                     st.session_state.show_reset_confirm = False
                     st.rerun()
+
+        st.markdown("---")
+        st.session_state.nav_view = st.radio("Navigation:", ["📊 Dashboard", "🏆 Wall of Badges", "🥤 Vessel & Cup Studio"])
+
+        dark_toggle = st.toggle("🌙 High-Contrast Dark Mode", value=st.session_state.dark_theme)
+        if dark_toggle != st.session_state.dark_theme:
+            st.session_state.dark_theme = dark_toggle
+            st.rerun()
+
+        
+# ------------------------------------------------------------------------------
+    # MOTIVATIONAL QUOTES MODULE
+    # ------------------------------------------------------------------------------
+
+    st.markdown("---")
+
+    motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
+
+    render_html(f"""
+    <div style="
+        background: linear-gradient(135deg, #383C78, #A95C96);
+        padding: 16px;
+        border-radius: 16px;
+        text-align: center;
+        margin-bottom: 12px;
+        box-shadow: 0 4px 12px rgba(56, 60, 120, 0.20);
+    ">
+        <div style="
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            opacity: 0.85;
+            margin-bottom: 10px;
+        ">
+            ✨ A LITTLE MOTIVATION
+        </div>
+
+        <div style="
+            font-size: 1rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            line-height: 1.6;
+        ">
+            {html.escape(motivational_quote)}
+        </div>
+
+        <div style="
+            font-size: 0.8rem;
+            margin-top: 10px;
+            color: #FFFFFF;
+            opacity: 0.8;
+        ">
+            — WaterBuddy 💧
+        </div>
+    </div>
+    """)
+
+    # EXISTING HYDRATION TIP
+    st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
+
 
     # --------------------------------------------------------------------------
     # VIEW 1: 📊 DASHBOARD
@@ -930,6 +930,14 @@ st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
                         "amount": converted_ml,
                         "running_total": st.session_state.total_intake
                     })
+                    new_pct = (st.session_state.total_intake / goal) * 100
+                    if new_pct >= 100:
+                        st.session_state.recent_art = "badge"
+                        st.balloons()
+                    elif new_pct >= 50:
+                        st.session_state.recent_art = "leaf"
+                    else:
+                        st.session_state.recent_art = "drop"
                     st.toast(f"Logged {converted_ml} ml from Cup Converter!", icon="🥤")
                     st.rerun()
 
