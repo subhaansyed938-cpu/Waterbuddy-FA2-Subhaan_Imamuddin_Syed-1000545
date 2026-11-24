@@ -24,7 +24,7 @@
 
 > **Student Developer:** Subhaan Imamuddin Syed(Candidate ID: `1000545`)  
 
-> **Project Partner:** Parth Gajera
+> **Project Partner:** Path Gajera
 
 > **School / Institutional Partner:** Aspee Nutan Academy / WACP International  
 
@@ -32,8 +32,7 @@
 
 > **Foundational Planning Atlas:** [Canva Visual Atlas ID: DAHaMtZ-7e8](https://www.canva.com/design/DAHaMtZ-7e8/n84luFgkTNmd7cwaOCu89Q/edit)
 
-> **Live Interactive Application:** [https://waterbuddy-fa2-subhaanimamuddinsyed-1000545-eaeq3lhin8q2xxxlhm.streamlit.app/](https://waterbuddy-fa2-subhaanimamuddinsyed-1000545-eaeq3lhin8q2xxxlhm.streamlit.app/)
-
+> **Live Interactive Application:**
 > **GitHub Repository URL:** [https://github.com/subhaansyed938-cpu/Waterbuddy-FA2-Subhaan_Imamuddin_Syed-1000545](https://github.com/subhaansyed938-cpu/Waterbuddy-FA2-Subhaan_Imamuddin_Syed-1000545)
 
 ---
