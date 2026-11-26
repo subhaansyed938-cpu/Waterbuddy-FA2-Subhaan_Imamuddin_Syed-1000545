@@ -702,55 +702,6 @@ else:
             st.session_state.dark_theme = dark_toggle
             st.rerun()
 
-        
-# ------------------------------------------------------------------------------
-    # MOTIVATIONAL QUOTES MODULE
-    # ------------------------------------------------------------------------------
-
-    st.markdown("---")
-
-    motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
-
-    render_html(f"""
-    <div style="
-        background: linear-gradient(135deg, #383C78, #A95C96);
-        padding: 16px;
-        border-radius: 16px;
-        text-align: center;
-        margin-bottom: 12px;
-        box-shadow: 0 4px 12px rgba(56, 60, 120, 0.20);
-    ">
-        <div style="
-            font-size: 0.75rem;
-            font-weight: 800;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #FFFFFF;
-            opacity: 0.85;
-            margin-bottom: 10px;
-        ">
-            ✨ A LITTLE MOTIVATION
-        </div>
-
-        <div style="
-            font-size: 1rem;
-            font-weight: 600;
-            color: #FFFFFF;
-            line-height: 1.6;
-        ">
-            {html.escape(motivational_quote)}
-        </div>
-
-        <div style="
-            font-size: 0.8rem;
-            margin-top: 10px;
-            color: #FFFFFF;
-            opacity: 0.8;
-        ">
-            — WaterBuddy 💧
-        </div>
-    </div>
-    """)
 
     # EXISTING HYDRATION TIP
     st.caption(f"💡 *{random.choice(HYDRATION_TIPS)}*")
@@ -941,7 +892,57 @@ else:
                     st.toast(f"Logged {converted_ml} ml from Cup Converter!", icon="🥤")
                     st.rerun()
 
-        # Intake Activity Feed & History Ledger
+       
+        # ----------------------------------------------------------------------
+        # MOTIVATIONAL QUOTES MODULE
+        # ----------------------------------------------------------------------
+
+        motivational_quote = random.choice(MOTIVATIONAL_QUOTES)
+
+        render_html(f"""
+        <div style="
+            background: linear-gradient(135deg, #383C78, #A95C96);
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(56, 60, 120, 0.20);
+        ">
+            <div style="
+                font-size: 0.75rem;
+                font-weight: 800;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                opacity: 0.85;
+                margin-bottom: 10px;
+            ">
+                ✨ A LITTLE MOTIVATION
+            </div>
+
+            <div style="
+                font-size: 1rem;
+                font-weight: 600;
+                color: #FFFFFF;
+                line-height: 1.6;
+            ">
+                {html.escape(motivational_quote)}
+            </div>
+
+            <div style="
+                font-size: 0.8rem;
+                margin-top: 10px;
+                color: #FFFFFF;
+                opacity: 0.8;
+            ">
+                — WaterBuddy 💧
+            </div>
+        </div>
+        """)
+
+ 
+ # Intake Activity Feed & History Ledger
         st.markdown("---")
         st.subheader("📋 Today's Hydration Ledger")
         if st.session_state.intake_history:
